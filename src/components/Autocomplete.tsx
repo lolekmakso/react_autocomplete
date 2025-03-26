@@ -23,9 +23,11 @@ export const Autocomplete: React.FC<Props> = ({
     const handler = setTimeout(() => {
       if (query !== lastQuery) {
         setLastQuery(query);
-        const filtered = query
+
+        const trimmedQuery = query.trim().toLowerCase();
+        const filtered = trimmedQuery
           ? people.filter(person =>
-              person.name.toLowerCase().includes(query.toLowerCase()),
+              person.name.toLowerCase().includes(trimmedQuery),
             )
           : people;
 
